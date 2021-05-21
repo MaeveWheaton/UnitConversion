@@ -19,58 +19,78 @@ namespace UnitConversion
 
         private void convertButton_Click(object sender, EventArgs e)
         {
-            int conversionChoice = Convert.ToInt32(choiceInput.Text);
-            double value = Convert.ToDouble(valueInput.Text);
+            try
+            {
+                int conversionChoice = Convert.ToInt32(choiceInput.Text);
+                double value = Convert.ToDouble(valueInput.Text);
+                double result;
 
-            if (conversionChoice == 1)
-            {
-                InchesToCm(value);
+                if (conversionChoice == 1)
+                {
+                    result = InchesToCm(value);
+                    convertOutput.Text = $"{value} inches = {result.ToString("0.00")} centimetres";
+                }
+                else if (conversionChoice == 2)
+                {
+                    result = FeetToCm(value);
+                    convertOutput.Text = $"{value} feet = {result.ToString("0.00")} centimetres";
+                }
+                else if (conversionChoice == 3)
+                {
+                    result = YardsToMetres(value);
+                    convertOutput.Text = $"{value} yards = {result.ToString("0.00")} metres";
+                }
+                else if (conversionChoice == 4)
+                {
+                    result = MilesToKm(value);
+                    convertOutput.Text = $"{value} miles = {result.ToString("0.00")} kilometres";
+                }
+                else
+                {
+                    choiceInput.Text = "";
+                    convertOutput.Text = "Please enter number from 1-4 for conversion type";
+                }
             }
-            else if (conversionChoice == 2)
+            catch
             {
-                FeetToCm(value);
-            }
-            else if (conversionChoice == 3)
-            {
-                YardsToMetres(value);
-            }
-            else if (conversionChoice == 4)
-            {
-                MilesToKm(value);
-            }
-            else
-            {
-                choiceInput.Text = "";
-                convertOutput.Text = "Please enter number from 1-4";
-            }
+                convertOutput.Text = "Please enter numbers";
+            }          
         }
 
-        public void InchesToCm(double inches)
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        public double InchesToCm(double inches)
         {
             double cm = inches * 2.54;
-
-            convertOutput.Text = $"{inches} inches = {cm.ToString("0.00")} centimetres";
+            return cm;
         }
 
-        public void FeetToCm(double feet)
+        public double FeetToCm(double feet)
         {
             double cm = feet * 30.48;
-
-            convertOutput.Text = $"{feet} feet = {cm.ToString("0.00")} centimetres";
+            return cm;
         }
 
-        public void YardsToMetres(double yards)
+        public double YardsToMetres(double yards)
         {
             double m = yards * 0.91;
-
-            convertOutput.Text = $"{yards} yards = {m.ToString("0.00")} metres";
+            return m;
         }
 
-        public void MilesToKm(double miles)
+        public double MilesToKm(double miles)
         {
             double km = miles * 1.6;
+            return km;            
+        }
 
-            convertOutput.Text = $"{miles} miles = {km.ToString("0.00")} kilometres";
+        public void Clear()
+        {
+            choiceInput.Text = "";
+            valueInput.Text = "";
+            convertOutput.Text = "";
         }
     }
 }

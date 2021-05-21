@@ -38,6 +38,7 @@ namespace UnitConversion
             this.valueLabel = new System.Windows.Forms.Label();
             this.convertButton = new System.Windows.Forms.Button();
             this.convertOutput = new System.Windows.Forms.Label();
+            this.clearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLabel
@@ -116,13 +117,30 @@ namespace UnitConversion
             this.convertOutput.Name = "convertOutput";
             this.convertOutput.Size = new System.Drawing.Size(523, 80);
             this.convertOutput.TabIndex = 7;
-            this.convertOutput.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.convertOutput.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // clearButton
+            // 
+            this.clearButton.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.clearButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.clearButton.FlatAppearance.BorderSize = 2;
+            this.clearButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.clearButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearButton.Location = new System.Drawing.Point(121, 706);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(517, 65);
+            this.clearButton.TabIndex = 8;
+            this.clearButton.Text = "Clear";
+            this.clearButton.UseVisualStyleBackColor = false;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(775, 736);
+            this.ClientSize = new System.Drawing.Size(775, 801);
+            this.Controls.Add(this.clearButton);
             this.Controls.Add(this.convertOutput);
             this.Controls.Add(this.convertButton);
             this.Controls.Add(this.valueLabel);
@@ -149,6 +167,7 @@ namespace UnitConversion
         private System.Windows.Forms.Label valueLabel;
         private System.Windows.Forms.Button convertButton;
         private System.Windows.Forms.Label convertOutput;
+        private System.Windows.Forms.Button clearButton;
     }
 }
 
